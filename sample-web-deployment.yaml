@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-front-deployment
+spec:
+  selector:
+    matchLabels:
+      greeting: laravel
+      department: front
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        greeting: laravel
+        department: front
+    spec:
+      # This section describes the containers that make up the deployment
+      containers:
+        - name: laravel-front
+          # CHANGE [PROJECT_ID] to the project where your Cloud SQL instance lives
+          image: gcr.io/smiling-destiny-184908/laravel-demo:latest
